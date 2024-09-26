@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BasicBirthday:jar">
+    <output-path>$PROJECT_DIR$/../RunTimeExec/out/artifacts/BasicBirthday_jar</output-path>
+    <root id="archive" name="BasicBirthday.jar">
+      <element id="module-output" name="BasicBirthday" />
+    </root>
+  </artifact>
+</component>
