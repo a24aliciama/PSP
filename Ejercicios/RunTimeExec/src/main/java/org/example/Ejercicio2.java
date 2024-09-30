@@ -1,8 +1,8 @@
 package org.example;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -24,33 +24,34 @@ public class Ejercicio2 {
      */
     public static void main(String[] args) throws IOException, InterruptedException {
         Random ran = new Random();
-        int random = ran.nextInt(10);
+        int random = ran.nextInt(10)+1;
         String cant = String.valueOf(random); //pasa de int a string
 
         String[] nums = new String[random];
 
-        System.out.println(random);
-        System.out.println(cant);
+        System.out.println(random + ", " + cant + ", argumentos");
 
         Runtime runtime = Runtime.getRuntime();
-        String[] command = {"java", "-cp","./src/main/resources/BasicBirthday-1.0-SNAPSHOT.jar", "org.example.BirthdayArgs", cant,  };
-
-        Process process = runtime.exec(command);
+        ArrayList<String> command = new ArrayList<>(Arrays.asList("java","-cp","./src/main/resources/BasicBirthday-1.0-SNAPSHOT.jar","org.example.BirthdayArgs",cant));
 
         for (int i = 0; i < random; i++){
 
-            nums[i]= String.valueOf(ran.nextInt(100));
-            System.out.println(nums[i]);
+            nums[i]= String.valueOf(ran.nextInt(100)+1);
             command.add(nums[i]);
+            System.out.println(nums[i]+ " arg num " + i);
         }
 
+        String[] comando = command.toArray(new String[0]);
+
+        System.out.println("ejecutamos");
+
+        Process process = runtime.exec(comando);
 
         Scanner sc = new Scanner(process.getInputStream()); //el escaner lee los datos
         while(sc.hasNextLine()){
             System.out.println(sc.nextLine());
         }
-        sc.close(); //borra el objeto scanner
-
+        sc.close();
 
         int exitStatus = process.waitFor();
         System.out.println("Exit status process date " + exitStatus);
@@ -60,7 +61,7 @@ public class Ejercicio2 {
             while(sce.hasNextLine()){
                 System.out.println(sce.nextLine());
             }
-            sce.close();
+            sce.close();//borra el objeto scanner
         }
 
     }
