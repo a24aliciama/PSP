@@ -1,0 +1,11 @@
+Open the Terminal tool window in IntellijIDEA
+Go to View | Tool Windows | Terminal or press AltF12.
+
+
+
+
+
+Generate a Javadoc reference
+IntelliJ IDEA provides a utility that enables you to generate a Javadoc reference for your project.
+
+In the main menu, go to Tools | Generate JavaDoc.
