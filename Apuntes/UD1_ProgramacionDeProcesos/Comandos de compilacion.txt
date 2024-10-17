@@ -1,0 +1,7 @@
+Compilar
+
+javac -cp pathDondeEstanLasClasesCompi -d pathDondeSeGuardaELCompilado pathDeLoQueQuieresCompilar
+
+Para leerlo (ejecutarlo)
+
+java -cp pathDondeEstanLasClasesCompi path.del.paquete.separado.por.puntos
