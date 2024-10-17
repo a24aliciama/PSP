@@ -1,4 +1,4 @@
-package org.BirthdayArgs;
+package org.Ejercicios1_0;
 
 public class BirthdayArgs {
     public static void main(String[] args) {

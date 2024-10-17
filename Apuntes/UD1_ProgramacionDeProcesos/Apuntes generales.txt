@@ -9,3 +9,5 @@ Generate a Javadoc reference
 IntelliJ IDEA provides a utility that enables you to generate a Javadoc reference for your project.
 
 In the main menu, go to Tools | Generate JavaDoc.
+
+cuando un proceso escribe tienes que leerlo y cuando lee tienes que escribirlo
