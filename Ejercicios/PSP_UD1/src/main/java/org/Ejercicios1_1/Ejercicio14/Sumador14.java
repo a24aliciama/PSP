@@ -13,16 +13,16 @@ public class Sumador14 {
      */
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Hola, cuantos numeros quieres sumar?");
+       // System.out.println("Hola, cuantos numeros quieres sumar?");
         int cant = teclado.nextInt();
         int sum = 0;
 
         for(int i = 0; i < cant; i ++){
-            System.out.println("Escribe el " + (i+1) + "º numero");
+            //System.out.println("Escribe el " + (i+1) + "º numero");
             sum += teclado.nextInt();
         }
 
-        System.out.println("La suma es: " + sum + ".\nEl cuadrado de la suma es: " + ((int) Math.pow(sum, 2)) + "." );
+        System.out.println("La suma es: " + sum + ".\nEl cuadrado de la suma es: " + ((int) Math.pow(sum, 2))  + "." );
 
     }
 }

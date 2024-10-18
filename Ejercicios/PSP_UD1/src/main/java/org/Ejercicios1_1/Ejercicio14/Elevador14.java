@@ -12,12 +12,12 @@ public class Elevador14 {
      */
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Hola, cuantos numeros quieres elevar?");
+        //System.out.println("Hola, cuantos numeros quieres elevar?");
         int cant = teclado.nextInt();
         int sum = 0;
 
         for(int i = 0; i < cant; i ++){
-            System.out.println("Escribe el " + (i+1) + "º numero");
+            //System.out.println("Escribe el " + (i+1) + "º numero");
             sum += ((int) Math.pow(teclado.nextInt(),2));
         }
 
