@@ -46,8 +46,6 @@ public class ContarVocals {
         //contador
         int contador = 0;
 
-        out.println("jwbfvbifvb");
-
         //leemos el archivo de entrada con Files, tenemos que pasarle el path del archivo.
         String lector = new String(Files.readAllBytes(Paths.get(archivoEn)));
 
