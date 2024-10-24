@@ -1,0 +1,91 @@
+no hay nada procesable mas pequeño que un hilo, terefa. 
+main thread cuando hay una la primera en crearse, pueden funcionar con jerarquía.
+
+
+se pueden crear threads como clase. 
+
+-----------------------------------------------------------------------------------------
+
+Inforunnable ir = new InfoRunnable
+
+Thread t1 = new Thread(ir) //thread 0
+Thread t2 = new Thread(ir) //thread 1
+
+t1.start()
+t2.start()
+
+
+Thread t3 = new Thread(ir, "T3") //name  //thread main
+
+t3.run() //lo hace desde main no estamos creando un nuevo thread. , se ejecuta en el main 
+
+//no se ejecutan de forma ordenada por eso es bueno poner nombres
+
+(el resultado esq run no sirve sin crear primero el thread)
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+Thread t4 = new Thread(
+	new Runnable() {
+		public void run(){
+			System.out.println("runnable Anonymous");
+		}
+	}
+);
+
+
+t4.start();
+Runnable runnable = ()->{
+	System.out.println("Runnable with lambda");
+};
+
+Thread t5= new Trhead(runnable);
+t5.start();
+	 
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+
+
+Heredar de Threads (extends)
+no se recomienda, mejor interfaz implementada, porq en java solo se puede heredar de un lado
+--------------------------------------------------------------------------------------------
+public class PrintThreads extends Thread{
+	@override
+public void run(){
+system.out.println("holiiiiiiiiiiiii")
+}
+	
+}
+
+=======================================================================================
+//La llamamos desde otra clase main= //
+=======================================================================================
+Thread t6 = new PrintThreads()
+
+t6.start();
+
+(el resultado sera holiiiiiiiiiiiii)
+
+-----------------------------------------------------------------------------------------
+El tema es que el thread tiene que acabar para cerrar todo el proceso (padre) y muere con el padre
+
+el thread demon es caracteristico porq no espera el proceso a que terminen pero no mueren por el padre
+
+cuando le damos a start se convierte en ejecutable esperando a ser running en cuanto se pueda ejecutar. Waiting esta esperando recursos o prioridad no se ejecuta es una espera innactiva, no consume recursos.
+si hay un bucle pueden estar running consumiendo recursos sin hacer nada
+Dead se acaba el thread
+
+
+--------------------------------------------------------------------------
+t6.join() //espera innactiva hasta que el t6 remata en procesos .waitfor()
+
+while(t5.isAlive()){
+	system.out.println("ifjvb")  //es un join pero consume recursos por que esta todo el rato 						preguntando el while si el thread esta vivo NO SE HACE NUNCA
+
+	Thread.slepp(50000L) //busy-waiting es espera activa NO SE HACE
+}
+
+
+
