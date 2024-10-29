@@ -40,7 +40,7 @@ public class Padre11 {
             Path archivo = archivoEnt.resolve("department" + depa + ".txt");
             String ruta = archivo.toString();
 
-            System.out.println("Hola soy la ruta del " + depa + ". " + ruta + "     chao");
+            //System.out.println("Hola soy la ruta del " + depa + ". " + ruta + "     chao");
 
             //iniciamos el proceso correspondiente al depa
             try {

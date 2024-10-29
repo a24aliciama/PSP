@@ -6,7 +6,7 @@ se pueden crear threads como clase.
 
 -----------------------------------------------------------------------------------------
 
-Inforunnable ir = new InfoRunnable
+Inforunnable ir = new InfoRunnable() //clase creada por la profe
 
 Thread t1 = new Thread(ir) //thread 0
 Thread t2 = new Thread(ir) //thread 1
@@ -87,5 +87,16 @@ while(t5.isAlive()){
 	Thread.slepp(50000L) //busy-waiting es espera activa NO SE HACE
 }
 
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+int num_threads = 8
+String[] names = (8 nombres)
+main:
+for (int i = 0; i < num_threads; i++){
+	Runnable gr = new GreetRunnable(names[]) //esto llama a una clase que basicamente tiene un main 						   con un saludo.
+	Thread th = new thread(gr)
+	th.start(); 
+}
 
 
