@@ -74,22 +74,17 @@ public class Ejecutable5 {
             Runnable tarea = new Runeable5(links.get(i), i, SALIDA);
             ejecutor.submit(tarea);
         }
-        if (!ejecutor.awaitTermination(5, TimeUnit.SECONDS)) {
-            System.out.println("El programa se esta ejecutando por favor espere...");
-        }
-        int cont = 0;
-        while(!ejecutor.awaitTermination(20, TimeUnit.SECONDS)){
-            System.out.println("por favor espere...");
-            cont ++;
 
-            if (cont == 5){
-                System.out.println("se ha terminado el tiempo de espera total: " + (cont*20));
-                ejecutor.shutdownNow();
-            }
-        }
-
+        //cerramos del executor
         ejecutor.shutdown();
 
+        // Esperar 5 segundos a que termine
+        if (ejecutor.awaitTermination(20, TimeUnit.SECONDS)) {
+            System.out.println("Todas las tareas han terminado.");
+        } else {
+            System.out.println("No todas las tareas terminaron. Interrumpiendo...");
+            ejecutor.shutdownNow(); // Interrumpir tareas activas
+        }
 
     }
 }
