@@ -1,5 +1,11 @@
 package org.example.ejercicio7;
 
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 public class Ejecutable7 {
     /**
      * DU2 - Exercise 7 - Java Threads - Atomic variables - Super even numbers
@@ -23,8 +29,46 @@ public class Ejecutable7 {
 
      * Follow the given specifications to create the application.
      */
+    public static void main(String[] args) throws InterruptedException {
+        Random ran = new Random();
 
-    public static void main(String[] args) {
+        //creamos dos numeros aleatorios entre 1 y 1000
+        int num1 = ran.nextInt(10000) + 1;
+        int num2 = ran.nextInt(10000) + 1;
 
+        //cogemos el menor y el mayor. Este será nuestro intervalo
+        //int mayor = Math.max(num1, num2);
+        //int menor = Math.min(num1, num2);
+        int menor = 200;
+        int mayor = 220;
+
+        //imprimimos el intervalo
+        System.out.println("Intervalo generado: " + menor + "-" + mayor + "\nSon " + (mayor - menor) + " numeros");
+
+        //creamos la lista de los numeros a comprobar
+        ArrayList<Integer> numsToCheck = new ArrayList<>();
+        for (int i = menor; i <= mayor; i++){
+            numsToCheck.add(i);
+        }
+
+        //creamos un pool de 4 threads
+        ExecutorService ejecutor = Executors.newFixedThreadPool(4);
+
+        //le pasamos los numeros al run
+        for (int i = 0; i < numsToCheck.size(); i++){
+            Runnable tarea = new Runeable7_SuperPar(numsToCheck.get(i), i+1);
+            ejecutor.submit(tarea);
+        }
+
+        //cerramos el ejecutor
+        ejecutor.shutdown();
+
+        //esperamos a que termine
+        if(ejecutor.awaitTermination(20, TimeUnit.SECONDS)) {
+            System.out.println("Todas las tareas han terminado.");
+        }else {
+            System.out.println("No han terminado las tareas");
+            ejecutor.shutdownNow();
+        }
     }
 }
