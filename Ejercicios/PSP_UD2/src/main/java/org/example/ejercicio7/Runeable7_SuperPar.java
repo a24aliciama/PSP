@@ -7,10 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Runeable7_SuperPar implements Runnable{
 
-    int num;
+    Number7 num;
     int orden;
 
-    public Runeable7_SuperPar(int num, int orden){
+    public Runeable7_SuperPar(Number7 num, int orden){
         this.num = num;
         this.orden = orden;
     }
@@ -23,27 +23,31 @@ public class Runeable7_SuperPar implements Runnable{
         //creamos el pool de 2
         ExecutorService ejecutor = Executors.newFixedThreadPool(2);
 
-        //le pasamos todos los digitos del numero para que compruebe que son pares
-        Runnable tarea = new Runeable7_DigitoPar(num);
-        ejecutor.submit(tarea);
+        //le pasamos cada digito por separado del numero para que compruebe que es par
+        String digitos = String.valueOf(num.getValue());
 
+        for (int i = 0; i < digitos.length(); i++){
+            int digito = Character.getNumericValue(digitos.charAt(i));
+
+            Runnable tarea = new Runeable7_DigitoPar(num, digito);
+            ejecutor.submit(tarea);
+
+        }
 
         //cerramos el ejecutor
         ejecutor.shutdown();
 
         //esperamos por si no termino
         try {
-            if(!ejecutor.awaitTermination(20, TimeUnit.SECONDS)) {
-                System.out.println("No han terminado las tareas");
+            if(ejecutor.awaitTermination(20, TimeUnit.SECONDS)) {
                 ejecutor.shutdownNow();
+            }else {
+                System.out.println("No han terminado las tareas2");
+                System.exit(1);
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-
-        //RESULTADO
-        String resultado = _esSuperPar.get()? "es SUPERPAR":"NO es superpar";
-        System.out.println(orden + "º numero: " + num + " " + resultado);
     }
 }

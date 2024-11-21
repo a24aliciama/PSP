@@ -37,18 +37,17 @@ public class Ejecutable7 {
         int num2 = ran.nextInt(10000) + 1;
 
         //cogemos el menor y el mayor. Este será nuestro intervalo
-        //int mayor = Math.max(num1, num2);
-        //int menor = Math.min(num1, num2);
-        int menor = 200;
-        int mayor = 220;
+        int mayor = Math.max(num1, num2);
+        int menor = Math.min(num1, num2);
 
         //imprimimos el intervalo
         System.out.println("Intervalo generado: " + menor + "-" + mayor + "\nSon " + (mayor - menor) + " numeros");
 
         //creamos la lista de los numeros a comprobar
-        ArrayList<Integer> numsToCheck = new ArrayList<>();
+        ArrayList<Number7> numsToCheck = new ArrayList<>();
         for (int i = menor; i <= mayor; i++){
-            numsToCheck.add(i);
+           Number7 num = new Number7(i);
+           numsToCheck.add(num);
         }
 
         //creamos un pool de 4 threads
@@ -56,6 +55,7 @@ public class Ejecutable7 {
 
         //le pasamos los numeros al run
         for (int i = 0; i < numsToCheck.size(); i++){
+            numsToCheck.get(i).setOrden(i);
             Runnable tarea = new Runeable7_SuperPar(numsToCheck.get(i), i+1);
             ejecutor.submit(tarea);
         }
@@ -66,9 +66,18 @@ public class Ejecutable7 {
         //esperamos a que termine
         if(ejecutor.awaitTermination(20, TimeUnit.SECONDS)) {
             System.out.println("Todas las tareas han terminado.");
+            ejecutor.shutdownNow();
         }else {
             System.out.println("No han terminado las tareas");
-            ejecutor.shutdownNow();
+            System.exit(1);
         }
+
+        //Resultado
+        numsToCheck.forEach( number -> {
+                    System.out.println(number.resultado());
+                }
+        );
+
+
     }
 }

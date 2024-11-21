@@ -4,12 +4,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Number7 {
     int value;
+    int orden;
     AtomicBoolean _esSuperPar;
 
     public Number7(int value) {
         this.value = value;
-        this._esSuperPar = new AtomicBoolean(false);
+        this._esSuperPar = new AtomicBoolean(true); //suponemos que es par en un principio
     }
+
+    public int getOrden(){return orden;}
 
     public int getValue() {
         return value;
@@ -23,27 +26,17 @@ public class Number7 {
         this.value = value;
     }
 
+    public void setOrden(int orden) {
+        this.orden = orden;
+    }
+
     public void set_esSuperPar(boolean _esSuperPar) {
         this._esSuperPar.set(_esSuperPar);
     }
 
-    // Métod para verificar si todos los dígitos del número son pares
 
-    public void comprobarDigitos()  {
-
-    //comprobaremos si los digitos son todos pares
-
-        String digitos = Integer.toString(value);
-        for (char digito : digitos.toCharArray()) {
-            if (!esPar(digito)) {
-                set_esSuperPar(false); // Si algún dígito no es par, no es super even
-                break;
-            }
-        }
+    public String resultado(){
+        String resultado = _esSuperPar.get()? "es SUPERPAR":"NO es superpar";
+        return orden + "º numero: " + value + " " + resultado;
     }
-
-    public boolean esPar(char digito) {
-        return  digito == '0' || digito == '2' || digito == '4' || digito == '6' || digito == '8';
-    }
-
 }
