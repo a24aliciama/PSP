@@ -3,6 +3,7 @@ package org.example.ejercicio9;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Ejecutable9 {
     /**
@@ -17,7 +18,7 @@ public class Ejecutable9 {
      * 0 otherwise
      * Follow the given specifications to create the application.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // generamos un numero random entre 0 y 100
         Random ran = new Random();
         int aleatorio = ran.nextInt(101);
@@ -26,6 +27,26 @@ public class Ejecutable9 {
         ExecutorService ejecutor = Executors.newFixedThreadPool(10);
 
         //Creamo sun objeto NumeroOculto
-        NumeroOculto numO = new NumeroOculto();
+        NumOculto9 numO = new NumOculto9(aleatorio);
+
+        //le pasamos el objeto y el num a descubrir al pool
+        Runnable tarea = new Runeable9(numO);
+        ejecutor.execute(tarea);
+
+        ejecutor.shutdown();
+
+        if (ejecutor.awaitTermination(20, TimeUnit.SECONDS)){
+            System.out.println("Terminado");
+            ejecutor.shutdownNow();
+        }else{
+            System.out.println("Error al encontrar numero");
+            System.exit(1);
+        }
+
+
+
+
+
+
     }
 }
