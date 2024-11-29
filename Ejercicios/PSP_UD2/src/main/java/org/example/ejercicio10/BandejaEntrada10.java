@@ -41,10 +41,13 @@ public class BandejaEntrada10 {
         productor.start();
         consumidor.start();
 
-
-
+        Thread.sleep(10000);
+        bandejaEntrada.stop();
+        productor.interrupt();
+        consumidor.interrupt();
         productor.join();
         consumidor.join();
+
 
     }
 
