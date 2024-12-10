@@ -18,11 +18,30 @@ public class Ejercicio1 {
      */
     public static void main(String[] args) throws IOException, InterruptedException {
 
+        // Obtenemos la instancia de Runtime para interactuar con el sistema
         Runtime runtime = Runtime.getRuntime();
 
+        // Obtener el número de procesadores disponibles para la JVM
         int procesadores = runtime.availableProcessors();
+        System.out.println("Número de procesadores disponibles: " + procesadores);
 
-        System.out.println(procesadores);
+        // Lanzar Google Chrome
+        System.out.println("Abriendo Google Chrome...");
+        runtime.exec("C:/Program Files/Google/Chrome/Application/chrome.exe"); // Asegúrate de que esta ruta es correcta en tu sistema
+
+        // Esperar un momento antes de lanzar YouTube (opcional, para observar los pasos)
+        Thread.sleep(2000); // Pausa de 2 segundos
+
+        // Abrir YouTube en Google Chrome
+        System.out.println("Abriendo YouTube en Google Chrome...");
+        runtime.exec(new String[]{"C:/Program Files/Google/Chrome/Application/chrome.exe", "https://www.youtube.com"});
+
+        // Esperar un momento antes de lanzar Notepad
+        Thread.sleep(2000); // Pausa de 2 segundos
+
+        // Lanzar Notepad (Bloc de notas)
+        System.out.println("Abriendo Notepad...");
+        runtime.exec("notepad.exe");
 
 
     }

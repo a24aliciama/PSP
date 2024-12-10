@@ -25,12 +25,19 @@ public class ContarVocals {
      */
 
     public static void main(String[] args) throws IOException {
-        if (args.length < 3){
+        if (args.length < 3) {
+            // Verifica si el número de argumentos pasados al programa es menor a 3
+            // Si no hay suficientes argumentos, imprime un mensaje indicando lo que se necesita y termina la ejecución
             out.println("Necesito 3 args. Vocal, archivo de entrada, archivo de salida");
-            return;
+            return; // Sale del programa porque no tiene los argumentos necesarios
         }
+
+        // Definimos la ruta donde queremos guardar las salidas del programa
         Path rutaSalidas = Paths.get("./src/main/resources/salidas/salida1.10");
-        if (Files.notExists(rutaSalidas)){
+
+        // Verificamos si la ruta especificada no existe
+        if (Files.notExists(rutaSalidas)) {
+            // Si la ruta no existe, creamos los directorios necesarios para que exista
             Files.createDirectories(rutaSalidas);
         }
 
