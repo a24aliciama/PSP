@@ -1,0 +1,1 @@
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 2	at org.example.SumaPares.main(SumaPares.java:11)
