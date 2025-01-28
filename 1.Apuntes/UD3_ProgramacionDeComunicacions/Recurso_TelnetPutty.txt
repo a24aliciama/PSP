@@ -1,0 +1,28 @@
+TELNET and PuTTY
+
+Telnet is a type of client-server protocol that opens a command line on a remote computer, typically a server.
+
+With the default settings of PuTTY (at least as of v0.73 released: 29-Sep-19) as a TELNET client, it sends the following characters as a part of its negotiation sequence options to the connected server:
+
+..... .....'.........
+
+Following are the actual Hex characters: ff fb 1f ff fb 20 ff fb 18 ff fb 27 ff fd 01 ff fb 03 ff fd 03
+
+Decimal: 255 251 31 255 251 32 255 251 24 255 251 39 255 253 1 255 251 3 255 253 3
+
+To disallow PuTTY to send these options, navigate to Connection -> Telnet and switch the Telnet Negotiation Mode: to Passive.
+
+
+TELNET y PuTTY
+
+Telnet es un tipo de protocolo cliente-servidor que abre una línea de comando en una computadora remota, generalmente un servidor.
+
+Con la configuración predeterminada de PuTTY (al menos a partir de la versión v0.73 lanzada el 29 de septiembre de 2019) como cliente TELNET, envía los siguientes caracteres como parte de sus opciones de secuencia de negociación al servidor conectado:
+
+..... .....'.........
+
+A continuación se muestran los caracteres hexadecimales reales: ff fb 1f ff fb 20 ff fb 18 ff fb 27 ff fd 01 ff fb 03 ff fd 03
+
+Decimal: 255 251 31 255 251 32 255 251 24 255 251 39 255 253 1 255 251 3 255 253 3
+
+Para evitar que PuTTY envíe estas opciones, navegue a Conexión -> Telnet y cambie el Modo de negociación de Telnet a Pasivo.
