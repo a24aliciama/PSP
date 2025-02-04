@@ -1,0 +1,19 @@
+DU3 - Exercise 9 - Multi threaded client-server app - UDP - TCP - Number facts
+
+We want to create a client-server application to obtain facts about numbers.
+
+The client must send to the server a command entered by the user. The only correct command is:
+
+NUMBER <number_letters> <TYPE> <number_type>
+
+If the user does not specify the number, or if the user does not use correctly the command, the server sends an Invalid request message to the client.
+
+The server must query a NUMBERS API web service to obtain a fact about the specified number.
+
+UDP:
+
+Create a NumberClientUDP class to launch the Client.
+
+Create a NumberServerUDP class to launch the Server.
+
+Create a NumberServerUDPWorker class for each thread on the Server.
