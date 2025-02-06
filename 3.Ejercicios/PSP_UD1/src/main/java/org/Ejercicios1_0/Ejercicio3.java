@@ -52,7 +52,7 @@ public class Ejercicio3 {
         Scanner teclado = new Scanner(System.in);
 
         int casos = teclado.nextInt();
-        teclado.nextLine();
+        teclado.nextLine(); //hacer nextline y me ahorro estas cosiñas
 
         List<Integer> escalones = new ArrayList<>();
         List<Integer> pasos = new ArrayList<>();
@@ -60,7 +60,8 @@ public class Ejercicio3 {
 
         for(int i = 0; i < casos; i ++){
             String[] nums = new String[2];
-            String frase = teclado.nextLine();
+            String frase = teclado.nextLine().trim();//trim quita espacios al principio y al final.
+            //System.out.println("'" + frase + "'");
             nums = frase.split("\\s+");
 
             escalones.add(Integer.valueOf(nums[0]));
