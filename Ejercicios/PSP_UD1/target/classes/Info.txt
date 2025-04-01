@@ -1,3 +1,0 @@
-This is a file to be opened with java.
-This is the second line of the file.
-Happy happy happy...
